@@ -11,7 +11,7 @@ define("port",default=9999,help='run on the given port',type=int)
 
 class Module_handler(tornado.web.UIModule):
     def render(self):
-        return self.render_string("module1.html",user_name=user_name,icon=icon,score=score)
+        return self.render_string("module1.html",list_elements=list_elements)
 
 class MainHandler(tornado.web.RequestHandler):
     @coroutine
@@ -20,13 +20,9 @@ class MainHandler(tornado.web.RequestHandler):
         members_list=requests.get('https://api.github.com/orgs/GDGVIT/members').json()
         for members in members_list:
             score=member['login']
-            #update the score of the people who have logged in on the server
-        new_array=sorted(member_list,key=lambda p:score[p])
-
-
-
-
-
+            #update the score of the people who have logged in on the database
+        new_array=sorted(member_list,key=lambda p:score(p[2])[::-1]
+        self.render('index.html',new_array=new_array)
 
 if __name__=="__main__":
     parse_command_line()

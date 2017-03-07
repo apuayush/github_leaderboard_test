@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GDGGithubLeaderBoard</title>
+	<link rel="stylesheet" type="text/css" href="{{static_url(style.css)}}">
+</head>
+<body>
+	<div class="main-box">
+		<div class="list-box">
+			<table>
+			{% for i in new_array %}
+				<tr>{% module list(i) %}</tr>
+			{% end %}
+			</table>
+		</div>
+		</div>
+
+</body>
+</html>
