@@ -2,16 +2,19 @@
 <html>
 <head>
 	<title>GDGGithubLeaderBoard</title>
-	<link rel="stylesheet" type="text/css" href="{{static_url(style.css)}}">
+	<link rel="stylesheet" type="text/css" href="{{static_url('style.css')}}">
 </head>
 <body>
 	<div class="main-box">
 		<div class="list-box">
-			<table>
-			{% for i in srt_members %}
-				<tr>{% module list(i[0],i[1]) %}</tr>
+			{% for i in users %}
+			<p>hello</p>
 			{% end %}
-			</table>
+			<!--table>
+			{% for i in users %}
+				<tr>{% module innerbox(i[0],i[1]) %}</tr>
+			{% end %}
+			</table-->
 		</div>
 		</div>
 

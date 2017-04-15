@@ -30,13 +30,23 @@ class ApiHandler(RequestHandler):
             users = []
             for members in users_key:
                 users.append([members,leaderboard[members]])
-            self.render('leaderboard.html',users=users)
+            self.render("index.html",users=users)
         else:
             self.write_error(666)
+
         self.finish()
 
-    def write_error(self, status_code, **kwargs):
+    """def write_error(self, status_code, **kwargs):
         self.write("sorry! crow error "+str(status_code))
+
+"""
+class scoreTab(UIModule):
+    def render(self):
+        return "<p>helloModule</p>"
+    """
+    def render(self, name, score):
+        return self.render_string('modules/module1.html', name=name, score=score)
+    """
 
 settings = dict(
     debug=True
@@ -46,9 +56,10 @@ app = Application(
     handlers=[(r'/', ApiHandler)],
     template_path=os.path.join(os.path.dirname(__file__), "template"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
+    ui_modules={'innerbox': scoreTab},
     **settings)
 
 if __name__ == "__main__":
     parse_command_line()
     HTTPServer(app).listen(options.port)
-    IOLoop.current().start()
+    IOLoop.instance().start()
