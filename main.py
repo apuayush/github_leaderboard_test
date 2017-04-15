@@ -8,6 +8,7 @@ from tornado.httpclient import AsyncHTTPClient
 # other libraries
 import os
 import json
+import env
 
 define("port", default=8000,
        help='run on the given port',
@@ -20,7 +21,7 @@ class ApiHandler(RequestHandler):
     @engine
     def get(self):
         client = AsyncHTTPClient()
-        response = yield Task(client.fetch,"https://radiant-harbor-42641.herokuapp.com/leaderboard")
+        response = yield Task(client.fetch,env.resource)
         body = json.loads(response.body)
 
         if body["status"] == 200:
