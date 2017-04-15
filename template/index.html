@@ -8,8 +8,8 @@
 	<div class="main-box">
 		<div class="list-box">
 			<table>
-			{% for i in new_array %}
-				<tr>{% module list(i) %}</tr>
+			{% for i in srt_members %}
+				<tr>{% module list(i[0],i[1]) %}</tr>
 			{% end %}
 			</table>
 		</div>
