@@ -33,12 +33,12 @@ class ApiHandler(RequestHandler):
         else:
             self.write_error(666)
 
-        self.finish()
+        # self.finish()
 
-    """def write_error(self, status_code, **kwargs):
+    def write_error(self, status_code, **kwargs):
         self.write("sorry! crow error "+str(status_code))
 
-"""
+
 
 
 class scoreTab(UIModule):
