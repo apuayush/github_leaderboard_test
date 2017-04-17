@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GDGGithubLeaderBoard</title>
-	<link rel="stylesheet" type="text/css" href="{{static_url(style.css)}}">
+  <title>Leader Board</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  	h1{
+  		font-family: 'Tangerine', serif;
+        font-size: 48px;
+  	}
+  	body{
+  		background-image: url(1.jpg);
+  		background-repeat: no-repeat;
+  		z-index: -1;
+  		opacity: 1;
+  	}
+  	*{
+  		color: white;
+  	}
+  </style>
 </head>
 <body>
-	<div class="main-box">
+<h1 align="center"><b>Leader board</b></h1>
+	<div class="container">
 		<div class="list-box">
-			<table>
-			{% for i in srt_members %}
-				<tr>{% module list(i[0],i[1]) %}</tr>
-			{% end %}
+			<table class="table table-hover table-bordered">
+			<thead>
+			<tr>
+			<th>{% for i in srt_members %}</th>
+				<th>{% module list(i[0],i[1]) %}</th>
+			<th>{% end %}</th>
+			</tr>
+			</thead>
 			</table>
 		</div>
 		</div>
