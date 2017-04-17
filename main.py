@@ -16,21 +16,20 @@ define("port", default=8000,
 
 
 class ApiHandler(RequestHandler):
-
     @asynchronous
     @engine
     def get(self):
         client = AsyncHTTPClient()
-        response = yield Task(client.fetch,env.resource)
+        response = yield Task(client.fetch, env.resource)
         body = json.loads(response.body)
 
         if body["status"] == 200:
             leaderboard = body["payload"]
-            users_key = sorted(leaderboard,key=lambda p:leaderboard[p])
+            users_key = sorted(leaderboard, key=lambda p: leaderboard[p])
             users = []
             for members in users_key:
-                users.append([members,leaderboard[members]])
-            self.render("index.html",users=users)
+                users.append([members, leaderboard[members]])
+            self.render("index.html", users=users)
         else:
             self.write_error(666)
 
@@ -40,23 +39,19 @@ class ApiHandler(RequestHandler):
         self.write("sorry! crow error "+str(status_code))
 
 """
+
+
 class scoreTab(UIModule):
-    def render(self):
-        return "<p>helloModule</p>"
-    """
     def render(self, name, score):
         return self.render_string('modules/module1.html', name=name, score=score)
-    """
 
-settings = dict(
-    debug=True
-)
+settings = dict(debug=True)
 
 app = Application(
     handlers=[(r'/', ApiHandler)],
     template_path=os.path.join(os.path.dirname(__file__), "template"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
-    ui_modules={'innerbox': scoreTab},
+    ui_modules={'scoreTab':scoreTab},
     **settings)
 
 if __name__ == "__main__":

@@ -8,13 +8,8 @@
 	<div class="main-box">
 		<div class="list-box">
 			{% for i in users %}
-			<p>hello</p>
+			<p>{% module scoreTab(i[0],i[1]) %}</p>
 			{% end %}
-			<!--table>
-			{% for i in users %}
-				<tr>{% module innerbox(i[0],i[1]) %}</tr>
-			{% end %}
-			</table-->
 		</div>
 		</div>
 
