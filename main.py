@@ -24,26 +24,29 @@ class ApiHandler(RequestHandler):
         body = json.loads(response.body)
 
         if body["status"] == 200:
+
             leaderboard = body["payload"]
             users_key = sorted(leaderboard, key=lambda p: leaderboard[p])
             users = []
+
             for members in users_key:
+
                 users.append([members, leaderboard[members]])
+
             self.render("index.html", users=users)
         else:
             self.write_error(666)
 
-        # self.finish()
+        self.finish()
 
     def write_error(self, status_code, **kwargs):
-        self.write("sorry! crow error "+str(status_code))
-
-
+        self.write("sorry! crow error " + str(status_code))
 
 
 class scoreTab(UIModule):
     def render(self, name, score):
-        return self.render_string('modules/module1.html', name=name, score=score)
+        return self.render_string('module/module1.html', name=name, score=score)
+
 
 settings = dict(debug=True)
 
@@ -51,7 +54,7 @@ app = Application(
     handlers=[(r'/', ApiHandler)],
     template_path=os.path.join(os.path.dirname(__file__), "template"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
-    ui_modules={'scoreTab':scoreTab},
+    ui_modules={'scoreTab': scoreTab},
     **settings)
 
 if __name__ == "__main__":

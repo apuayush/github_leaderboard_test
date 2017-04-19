@@ -1,0 +1,15 @@
+.back{
+	background:url("gdg.jpg") no-repeat  center bottom ;
+  background-size:cover;
+  height: 900px;
+  position: relative;
+  top: -55px;
+  width: 100%;
+  background-attachment:fixed;
+}
+table{
+	
+	border-style:solid;
+	
+
+	}

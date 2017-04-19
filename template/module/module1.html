@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Leaderboard</title>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="{{static_url('style.css')}}" rel="stylesheet" type="text/css">
-</head>
-<body>
-	<div class="back">
-	<div class="main-table">
-	<table class="table" cellpadding="5" width="400" heigth>
-		{% for i in users %}
-		<tr>{% module scoreTab(i[0],i[1]) %}</tr>
-		{% end %}
-		</table>
+	<div class="scorebox">
+		<td>{{name}}</td><td>{{score}}</td>
 	</div>
-	</div>
-		
-
-</body>
-</html>
